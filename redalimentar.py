@@ -35,7 +35,7 @@ def get_csvs_for_region(locate):
         lookingurl = BASE_URL + lookup_url.format(lookupstr["term"], sucsarray, lookupstr.get("category", "0"))
         response = requests.get(lookingurl, headers=HEADERS)
         productos = pd.DataFrame.from_records(json.loads(response.content.decode("latin-1")).get("productos", []))
-        productos = productos[productos["presentacion"].str.contains(lookupstr["packagings"])].sort_values("precioMin").iloc[:4]
+        productos = productos[productos["presentacion"].str.contains(lookupstr["packagings"])].sort_values("precioMin").iloc[:5]
         candidates = productos.id.to_list()
         
         finalproductdf = pd.DataFrame()

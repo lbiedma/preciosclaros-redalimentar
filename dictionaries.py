@@ -45,6 +45,7 @@ lookup_products = {
     "Dulce de Leche": {
         "term": "dulce de leche 400",
         "packagings": "400.0 gr",
+        "category": "020607",
     },
     "Edulcorante Líquido": {
         "term": "edulcorante liquido 2",
@@ -55,7 +56,7 @@ lookup_products = {
         "packagings": "500.0 gr",
     },
     "Garbanzos Secos": {
-        "term": "garbanzos 500",
+        "term": "garbanzo 500",
         "packagings": "500.0 gr",
     },
     "Harina 000": {
