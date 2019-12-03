@@ -118,6 +118,16 @@ lookup_products = {
     },
 }
 
+
+grouped_products = {
+    "Queso Cuartirolo": {
+        "term": "queso",
+        "packagings": "1 Kg",
+        "category": "060608004",
+    }
+}
+
+
 # 8 coordenadas para el proyecto.
 locations = {
     "Noroeste": {
