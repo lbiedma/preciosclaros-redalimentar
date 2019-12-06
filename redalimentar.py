@@ -56,6 +56,7 @@ def get_groupables_for_region(locate, sucsarray):
             productdf = create_grouped_productdf(lookupstr, sucursal)
             finaldf = finaldf.append(productdf)
 
+        finaldf["precio_lista"] = pd.to_numeric(finaldf["precio_lista"], errors="coerce")
         datos = datos.merge(
             finaldf, on="sucursal",
         ).sort_values(

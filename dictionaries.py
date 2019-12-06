@@ -124,7 +124,12 @@ grouped_products = {
         "term": "queso",
         "packagings": "1 Kg",
         "category": "060608004",
-    }
+    },
+    "Huevos": {
+        "term": "huevos",
+        "packagings": "12 Un",
+        "category": "060501001",
+    },
 }
 
 
