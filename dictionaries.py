@@ -41,6 +41,12 @@ lookup_products = {
     "Choclo Grano": {
         "term": "choclo grano lata",
         "packagings": "300.0 gr|350.0 gr",
+        "remove": "crema|cremoso",
+    },
+    "Durazno en Lata": {
+        "term": "durazno 8",
+        "packagings": "800.0 gr|820.0 gr|1.0 un",
+        "category": "0205",
     },
     "Dulce de Leche": {
         "term": "dulce de leche 400",
@@ -62,6 +68,7 @@ lookup_products = {
     "Harina 000": {
         "term": "harina 000",
         "packagings": "1.0 kg",
+        "remove": "0000",
     },
     "Harina Maiz": {
         "term": "harina maiz",
@@ -86,6 +93,10 @@ lookup_products = {
     "Levadura Seca": {
         "term": "levadura 20",
         "packagings": "20.0 gr",
+    },
+    "Maní Sin Sal": {
+        "term": "mani sin sal 1 kg",
+        "packagings": "1.0 kg",
     },
     "Manteca": {
         "term": "manteca 200",
@@ -114,8 +125,50 @@ lookup_products = {
     },
     "Yogur Bebible Descremado": {
         "term": "yogur bebible descremado 1",
-        "packagings": "1.0 lt|1.0 kg",
+        "packagings": "1.0 lt|1.0 kg|900.0 gr",
     },
+}
+
+
+holiday_products = {
+    "Aceitunas": {
+        "term": "aceitunas verdes 1 kg",
+        "packagings": "1.0 kg",
+        "remove": "descarozadas|despepitadas/rellenas"
+    },
+    "Budín Inglés": {
+        "term": "budin",
+        "packagings": "190.0 gr|220.0 gr",
+    },
+    "Garrapiñada de maní": {
+        "term": "garrapi",
+        "packagings": "70.0 gr|80.0 gr|100.0 gr",
+    },
+    "Lomitos de Atun": {
+        "term": "atun 1",
+        "packagings": "160.0 gr|170.0 gr",
+        "contain": "lomito|lomo",
+        "remove": "aceite",
+    },
+    "Mayonesa Light": {
+        "term": "mayonesa light",
+        "packagings": "450.0 gr|475.0 gr|495.0 gr|500.0 gr",
+    },
+    "Mostaza": {
+        "term": "mostaza 2",
+        "packagings": "200.0 gr|220.0 gr|250.0 gr",
+        "remove": "miel",
+    },
+    "Pionono": {
+        "term": "pionono",
+        "packagings": "150.0 gr|180.0 gr|200.0 gr",
+        "remove": "chocolate",
+    },
+    "Turrón de Maní": {
+        "term": "turron de mani",
+        "packagings": "120.0 gr",
+        "remove": "yema",
+    }
 }
 
 
@@ -130,6 +183,20 @@ grouped_products = {
         "packagings": "12 Un",
         "category": "060501001",
     },
+}
+
+
+grouped_holidays = {
+    "Pan Dulce": {
+        "term": "pan dulce 400",
+        "packagings": "400 Gr",
+        "category": "021099018",
+    },
+    "Queso Tybo": {
+        "term": "queso tybo",
+        "packagings": "1 Kg",
+        "category": "060611020",
+    }
 }
 
 

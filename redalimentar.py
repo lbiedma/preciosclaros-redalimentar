@@ -4,9 +4,11 @@ import pandas as pd
 from zipfile import ZipFile
 
 from dictionaries import (
+    grouped_holidays,
     grouped_products,
     locations,
     lookup_products,
+    holiday_products,
 )
 from helpers import (
     create_grouped_productdf,
@@ -21,6 +23,7 @@ today_string = datetime.today().strftime("%Y%m%d")
 
 def get_csvs_for_region(locate, sucsarray):
 
+    lookup_products.update(holiday_products)
     for productstr, lookupstr in lookup_products.items():
         productos = get_products_from_sucursales(lookupstr, sucsarray)
         candidates = productos.id.to_list()
@@ -47,6 +50,8 @@ def get_csvs_for_region(locate, sucsarray):
 
 
 def get_groupables_for_region(locate, sucsarray):
+    grouped_products.update(grouped_holidays)
+
     for product in grouped_products.keys():
         lookupstr = grouped_products.get(product)
 
@@ -79,23 +84,23 @@ def main():
         os.makedirs(today_string)
     for locate in locations:
         region = locations.get(locate)
-        region_string = "{}/{}".format(today_string, region.get("code"))
+        region_string = "data/{}/{}".format(today_string, region.get("code"))
         if not os.path.exists(region_string):
             os.makedirs(region_string)
         sucsarray = get_array_sucursales(region.get("lat"), region.get("lon"))
         get_csvs_for_region(region, sucsarray)
         get_groupables_for_region(region, sucsarray)
 
-    with ZipFile('{}.zip'.format(today_string), 'w') as zipObj:
-        # Iterate over all the files in directory
-        for folderName, subfolders, filenames in os.walk(today_string):
-            for filename in filenames:
-                #create complete filepath of file in directory
-                filePath = os.path.join(folderName, filename)
-                # Add file to zip
-                zipObj.write(filePath)
-    print("Archivos zipeados!")
+    # with ZipFile('{}.zip'.format(today_string), 'w') as zipObj:
+    #     # Iterate over all the files in directory
+    #     for folderName, subfolders, filenames in os.walk(today_string):
+    #         for filename in filenames:
+    #             #create complete filepath of file in directory
+    #             filePath = os.path.join(folderName, filename)
+    #             # Add file to zip
+    #             zipObj.write(filePath)
+    # print("Archivos zipeados!")
 
-    
+
 if __name__ == "__main__":
     main()

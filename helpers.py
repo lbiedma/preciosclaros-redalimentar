@@ -38,8 +38,10 @@ def get_products_from_sucursales(lookupstr, sucsarray):
             json.loads(response.content.decode("latin-1")).get("productos", [])
         )
         productos = productos[
-                        productos["presentacion"].str.contains(lookupstr["packagings"])
-                    ].sort_values("precioMin").iloc[:5]
+            (productos["presentacion"].str.contains(lookupstr["packagings"])) \
+            & (~productos["nombre"].str.lower().str.contains(lookupstr.get("remove", "___"))) \
+            & (productos["nombre"].str.lower().str.contains(lookupstr.get("contain", "")))
+        ].sort_values("precioMin").iloc[:5]
 
     return productos
 
