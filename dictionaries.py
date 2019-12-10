@@ -134,7 +134,7 @@ holiday_products = {
     "Aceitunas": {
         "term": "aceitunas verdes 1 kg",
         "packagings": "1.0 kg",
-        "remove": "descarozadas|despepitadas/rellenas"
+        "remove": "descarozadas|despepitadas|rellenas"
     },
     "Budín Inglés": {
         "term": "budin",
