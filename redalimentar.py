@@ -41,7 +41,7 @@ def get_csvs_for_region(locate, sucsarray):
         )
         finalproductdf.sort_values("precio", inplace=True)
         
-        csv_string = "{}/{}/{}.csv".format(today_string, locate["code"], productstr)
+        csv_string = "data/{}/{}/{}.csv".format(today_string, locate["code"], productstr)
         finalproductdf[["nombre", "comercio", "precio"]].reset_index(
             drop=True
         ).to_csv(csv_string)
@@ -73,7 +73,7 @@ def get_groupables_for_region(locate, sucsarray):
             },
         )
 
-        csv_string = "{}/{}/{}.csv".format(today_string, locate["code"], product)
+        csv_string = "data/{}/{}/{}.csv".format(today_string, locate["code"], product)
         datos[["nombre", "comercio", "precio"]].to_csv(csv_string)
 
         print("Saved {}".format(csv_string))
