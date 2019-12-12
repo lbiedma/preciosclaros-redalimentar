@@ -80,9 +80,7 @@ def get_groupables_for_region(locate, sucsarray):
 
 
 def main():
-    if not os.path.exists(today_string):
-        os.makedirs(today_string)
-    for locate in locations:
+   for locate in locations:
         region = locations.get(locate)
         region_string = "data/{}/{}".format(today_string, region.get("code"))
         if not os.path.exists(region_string):
