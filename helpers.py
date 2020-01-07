@@ -1,6 +1,8 @@
 import json
+import os
 import pandas as pd
 import requests
+from zipfile import ZipFile
 
 
 BASE_URL = "https://d3e6htiiul5ek9.cloudfront.net/prod/"
@@ -37,11 +39,12 @@ def get_products_from_sucursales(lookupstr, sucsarray):
         productos = pd.DataFrame.from_records(
             json.loads(response.content.decode("latin-1")).get("productos", [])
         )
-        productos = productos[
-            (productos["presentacion"].str.contains(lookupstr["packagings"])) \
-            & (~productos["nombre"].str.lower().str.contains(lookupstr.get("remove", "___"))) \
-            & (productos["nombre"].str.lower().str.contains(lookupstr.get("contain", "")))
-        ].sort_values("precioMin").iloc[:5]
+        if not productos.empty:
+            productos = productos[
+                (productos["presentacion"].str.contains(lookupstr["packagings"]))
+                & (~productos["nombre"].str.lower().str.contains(lookupstr.get("remove", "___")))
+                & (productos["nombre"].str.lower().str.contains(lookupstr.get("contain", "")))
+            ].sort_values("precioMin").iloc[:5]
 
     return productos
 
@@ -97,3 +100,15 @@ def create_grouped_productdf(lookupstr, sucursal):
         prod_in_suc = prod_in_suc[["sucursal", "producto_descripcion", "precio_lista"]]
 
     return prod_in_suc
+
+
+def get_zip_from_directory(directorystr):
+    with ZipFile('{}.zip'.format(directorystr), 'w') as zipObj:
+        # Iterate over all the files in directory
+        for folderName, subfolders, filenames in os.walk(directorystr):
+            for filename in filenames:
+                #create complete filepath of file in directory
+                filePath = os.path.join(folderName, filename)
+                # Add file to zip
+                zipObj.write(filePath)
+    print("Archivos zipeados!")

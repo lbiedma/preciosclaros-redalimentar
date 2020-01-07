@@ -1,14 +1,11 @@
 from datetime import datetime
 import os
 import pandas as pd
-from zipfile import ZipFile
 
 from dictionaries import (
-    grouped_holidays,
     grouped_products,
     locations,
     lookup_products,
-    holiday_products,
 )
 from helpers import (
     create_grouped_productdf,
@@ -23,9 +20,18 @@ today_string = datetime.today().strftime("%Y%m%d")
 
 def get_csvs_for_region(locate, sucsarray):
 
-    lookup_products.update(holiday_products)
     for productstr, lookupstr in lookup_products.items():
+
+        csv_string = "data/{}/{}/{}.csv".format(today_string, locate["code"], productstr)
+        if os.path.isfile(csv_string):
+            print("{} already exists, skipping...".format(csv_string))
+            continue
+
         productos = get_products_from_sucursales(lookupstr, sucsarray)
+        if productos.empty:
+            print("Couldn't find {} in {}, skipping...".format(productstr, locate["code"]))
+            continue
+
         candidates = productos.id.to_list()
 
         finalproductdf = create_productsdf_from_candidates_sucursales(
@@ -41,7 +47,6 @@ def get_csvs_for_region(locate, sucsarray):
         )
         finalproductdf.sort_values("precio", inplace=True)
         
-        csv_string = "data/{}/{}/{}.csv".format(today_string, locate["code"], productstr)
         finalproductdf[["nombre", "comercio", "precio"]].reset_index(
             drop=True
         ).to_csv(csv_string)
@@ -50,11 +55,14 @@ def get_csvs_for_region(locate, sucsarray):
 
 
 def get_groupables_for_region(locate, sucsarray):
-    grouped_products.update(grouped_holidays)
 
     for product in grouped_products.keys():
-        lookupstr = grouped_products.get(product)
+        csv_string = "data/{}/{}/{}.csv".format(today_string, locate["code"], product)
+        if os.path.isfile(csv_string):
+            print("{} already exists, skipping...".format(csv_string))
+            continue
 
+        lookupstr = grouped_products.get(product)
         datos = get_sucs_for_product(lookupstr, sucsarray, locate)
         finaldf = pd.DataFrame()
         for sucursal in datos["sucursal"]:
@@ -73,7 +81,6 @@ def get_groupables_for_region(locate, sucsarray):
             },
         )
 
-        csv_string = "data/{}/{}/{}.csv".format(today_string, locate["code"], product)
         datos[["nombre", "comercio", "precio"]].to_csv(csv_string)
 
         print("Saved {}".format(csv_string))
@@ -88,16 +95,6 @@ def main():
         sucsarray = get_array_sucursales(region.get("lat"), region.get("lon"))
         get_csvs_for_region(region, sucsarray)
         get_groupables_for_region(region, sucsarray)
-
-    # with ZipFile('{}.zip'.format(today_string), 'w') as zipObj:
-    #     # Iterate over all the files in directory
-    #     for folderName, subfolders, filenames in os.walk(today_string):
-    #         for filename in filenames:
-    #             #create complete filepath of file in directory
-    #             filePath = os.path.join(folderName, filename)
-    #             # Add file to zip
-    #             zipObj.write(filePath)
-    # print("Archivos zipeados!")
 
 
 if __name__ == "__main__":

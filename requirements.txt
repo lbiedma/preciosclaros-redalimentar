@@ -1,6 +1,6 @@
-datetime
 json
 numpy
 pandas
-requests
-zipfile
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
