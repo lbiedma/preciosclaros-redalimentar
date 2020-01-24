@@ -1,7 +1,9 @@
 from datetime import datetime
+from multiprocessing import Pool
 import os
 import pandas as pd
 
+from auth_pydrive import upload_to_drive
 from dictionaries import (
     grouped_products,
     locations,
@@ -86,15 +88,26 @@ def get_groupables_for_region(locate, sucsarray):
         print("Saved {}".format(csv_string))
 
 
+def process_data_for_region(region):
+    sucsarray = get_array_sucursales(region.get("lat"), region.get("lon"))
+    get_csvs_for_region(region, sucsarray)
+    get_groupables_for_region(region, sucsarray)
+
+
 def main():
-   for locate in locations:
+    regions = []
+    for locate in locations:
         region = locations.get(locate)
         region_string = "data/{}/{}".format(today_string, region.get("code"))
         if not os.path.exists(region_string):
             os.makedirs(region_string)
-        sucsarray = get_array_sucursales(region.get("lat"), region.get("lon"))
-        get_csvs_for_region(region, sucsarray)
-        get_groupables_for_region(region, sucsarray)
+        regions.append(region)
+
+    with Pool(processes=4) as pool:
+        pool.map(process_data_for_region, regions)
+
+    directorystr = "data/{}".format(today_string)
+    upload_to_drive(directorystr=directorystr)
 
 
 if __name__ == "__main__":

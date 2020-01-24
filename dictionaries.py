@@ -159,7 +159,7 @@ lookup_products = {
         "packagings": "400.0 gr",
     },
     "Leche Maternizada": {
-        "term": "leche formula",
+        "term": "leche en polvo infantil 800",
         "packagings": " ",
     },
     "Lentejas Secas": {
