@@ -5,7 +5,7 @@ import requests
 from zipfile import ZipFile
 
 
-BASE_URL = "https://d3e6htiiul5ek9.cloudfront.net/prod/"
+BASE_URL = "https://d3e6htiiul5ek9.cloudfront.net/dev/"
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
 }

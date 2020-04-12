@@ -51,7 +51,7 @@ def get_csvs_for_region(locate, sucsarray):
         
         finalproductdf[["nombre", "comercio", "precio"]].reset_index(
             drop=True
-        ).to_csv(csv_string)
+        ).to_csv(csv_string, index=False)
 
         print("Saved {}".format(csv_string))
 
@@ -83,7 +83,7 @@ def get_groupables_for_region(locate, sucsarray):
             },
         )
 
-        datos[["nombre", "comercio", "precio"]].to_csv(csv_string)
+        datos[["nombre", "comercio", "precio"]].to_csv(csv_string, index=False)
 
         print("Saved {}".format(csv_string))
 
@@ -103,7 +103,9 @@ def main():
             os.makedirs(region_string)
         regions.append(region)
 
-    with Pool(processes=4) as pool:
+    #for region in regions:
+    #    process_data_for_region(region)
+    with Pool(processes=3) as pool:
         pool.map(process_data_for_region, regions)
 
     directorystr = "data/{}".format(today_string)
