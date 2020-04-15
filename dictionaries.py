@@ -54,6 +54,10 @@ lookup_products = {
         "packagings": "6.0 lt|6.25 lt|6.3 lt|6.5 lt",
         "category": "05",
     },
+    "Alcohol Etílico": {
+        "term": "alcohol etilico 500",
+        "packagings": "500.0 cc|500.0 ml",
+    },
     "Arroz Integral": {
         "term": "arroz integral 1 kg",
         "packagings": "1.0 kg",
@@ -77,6 +81,10 @@ lookup_products = {
     "Azúcar": {
         "term": "azucar 1 kg",
         "packagings": "1.0 kg",
+    },
+    "Bebida Deportiva": {
+        "term": "bebida isotonica 1.25 lt",
+        "packagings": "1.25 lt",
     },
     "Cacao en Polvo": {
         "term": "cacao en polvo 360",
@@ -102,6 +110,14 @@ lookup_products = {
         "remove": "azucarados|zucaritas",
         "category": "02",
     },
+    "Desinfectante Líquido": {
+        "term": "limpiador piso 900",
+        "packagings": "900.0 cc|900.0 ml",
+    },
+    "Detergente": {
+        "term": "detergente 750",
+        "packagings": "750.0 cc|750.0 ml",
+    },
     "Durazno en Lata": {
         "term": "durazno 8",
         "packagings": "800.0 gr|820.0 gr|1.0 un",
@@ -115,6 +131,10 @@ lookup_products = {
     "Edulcorante Líquido": {
         "term": "edulcorante liquido 2",
         "packagings": "200.0 cc|200.0 ml|250.0 cc|250.0 ml",
+    },
+    "Fideos Guiseros": {
+        "term": "fideo tirabuzon 500",
+        "packagings": "500.0 gr",
     },
     "Fideos Largos": {
         "term": "tallarin",
@@ -146,9 +166,25 @@ lookup_products = {
         "term": "harina integral 1",
         "packagings": "1.0 kg",
     },
+    "Jabón Blanco": {
+        "term": "jabon blanco",
+        "packagings": "120.0 gr|125.0 gr|400.0 gr",
+    },
+    "Jabón en Polvo": {
+        "term": "jabon polvo 800",
+        "packagings": "800.0 gr",
+    },
+    "Jabón de Tocador": {
+        "term": "jabon tocador pack 3",
+        "packagings": "3.0 un|375.0 gr|330.0 gr|270.0 gr",
+    },
     "Jugo en Polvo": {
         "term": "jugo en polvo",
         "packagings": " ",
+    },
+    "Lavandina": {
+        "term": "lavandina 2 lt",
+        "packagings": "2.0 lt",
     },
     "Leche Descremada (SachetCaja)": {
         "term": "leche descremada 1",
@@ -159,7 +195,7 @@ lookup_products = {
         "packagings": "400.0 gr",
     },
     "Leche Maternizada": {
-        "term": "leche en polvo infantil 800",
+        "term": "leche infantil 1 800",
         "packagings": " ",
     },
     "Lentejas Secas": {
@@ -170,16 +206,20 @@ lookup_products = {
         "term": "levadura 20",
         "packagings": "20.0 gr",
     },
-    "Lomitos de Atun": {
-        "term": "atun 1",
-        "packagings": "160.0 gr|170.0 gr",
-        "contain": "lomito|lomo",
-        "remove": "aceite",
-    },
+    #"Lomitos de Atun": {
+    #    "term": "atun 1",
+    #    "packagings": "160.0 gr|170.0 gr",
+    #    "contain": "lomito|lomo",
+    #    "remove": "aceite",
+    #},
     "Manteca": {
         "term": "manteca 200",
         "packagings": "200.0 gr",
         "category": "06",
+    },
+    "Mayonesa Light": {
+        "term": "mayonesa light",
+        "packagings": "250.0 gr|250.0 cc|250.0 ml|237.0 gr",
     },
     "Masa de Tarta": {
         "term": "pascualina",
@@ -188,6 +228,10 @@ lookup_products = {
     "Mermelada": {
         "term": "mermelada 500",
         "packagings": "500.0 gr",
+    },
+    "Papel higiénico": {
+        "term": "papel pack 4",
+        "packagings": "200.0 mt|320.0 mt|120.0 mt|4.0 un|400.0 mt|80.0 mt",
     },
     "Poroto Alubia": {
         "term": "poroto alubia",
@@ -200,6 +244,14 @@ lookup_products = {
     "Queso Untable Light": {
         "term": "queso untable light",
         "packagings": "290.0 gr|300.0 gr",
+    },
+    "Repelente": {
+        "term": "repelente",
+        "packagings": " ",
+    },
+    "Rollo de Cocina": {
+        "term": "rollo pack 3",
+        "packagings": "3.0 un",
     },
     "Sal Fina": {
         "term": "sal fina",

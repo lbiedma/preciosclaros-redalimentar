@@ -26,6 +26,7 @@ def get_array_sucursales(latitude, longitude):
     sucursales = pd.DataFrame.from_records(
         json.loads(response.content.decode("latin-1")).get("sucursales", [])
     )
+    sucursales = sucursales[sucursales["banderaDescripcion"].str.contains("Mercamax|Express|Carrefour|Libertad|Mariano")]
     array = str(list(sucursales.id)).strip("[]\'").replace("', '", ",")
 
     return array
